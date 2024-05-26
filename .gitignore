@@ -1,3 +1,6 @@
+# application properties
+.properties
+
 # Compiled class file
 *.class
 
