@@ -1,5 +1,5 @@
 # application properties
-.properties
+application-conf.properties
 
 # Compiled class file
 *.class
