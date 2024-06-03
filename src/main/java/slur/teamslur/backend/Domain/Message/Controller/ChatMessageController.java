@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import slur.teamslur.backend.Domain.Message.DTO.ChatMessage;
-import slur.teamslur.backend.Domain.Message.DTO.ResponseChat;
 import slur.teamslur.backend.Domain.Message.Service.ChatMessageService;
 
 @RequiredArgsConstructor
