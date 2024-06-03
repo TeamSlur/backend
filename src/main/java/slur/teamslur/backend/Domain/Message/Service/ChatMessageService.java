@@ -1,20 +1,27 @@
 package slur.teamslur.backend.Domain.Message.Service;
 
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import slur.teamslur.backend.Domain.Message.DTO.ChatMessage;
-import slur.teamslur.backend.Domain.Message.DTO.ResponseChat;
+import slur.teamslur.backend.Domain.Message.Entity.ChatMessageEntity;
 import slur.teamslur.backend.Domain.Message.Repository.ChatMessageRepository;
 
 @Service
 public class ChatMessageService {
-    private ChatMessageRepository repository;
+    private final ChatMessageRepository repository;
 
-    public void saveMessage(ChatMessage chatMessage) {
+    public ChatMessageService(ChatMessageRepository repository){
+        this.repository = repository;
     }
 
-    public Page<ResponseChat> getChats(Pageable pageable) {
-        return null;
+    public void saveMessage(ChatMessage chatMessage) {
+        repository.save(chatMessage.toEntity());
+    }
+
+    public Page<ChatMessage> getChats(int projId, Pageable pageable) {
+        Page<ChatMessageEntity> entityPage = repository.findChatMessageEntitiesByProjId(projId, pageable);
+        return entityPage.map(ChatMessage::new);
     }
 }

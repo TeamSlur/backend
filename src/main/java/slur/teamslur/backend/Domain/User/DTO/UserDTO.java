@@ -1,7 +1,8 @@
-package slur.teamslur.backend.Domain.User;
+package slur.teamslur.backend.Domain.User.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import slur.teamslur.backend.Domain.User.Entity.UserEntity;
 
 @Data
 @AllArgsConstructor
@@ -11,8 +12,8 @@ public class UserDTO {
     private String email;
 
     public UserDTO(UserEntity entity){
-        this.id=entity.getUser_id();
-        this.name=entity.getUser_name();
-        this.email=entity.getUser_email();
+        this.id=entity.getId();
+        this.name=entity.getName();
+        this.email=entity.getEmail();
     }
 }

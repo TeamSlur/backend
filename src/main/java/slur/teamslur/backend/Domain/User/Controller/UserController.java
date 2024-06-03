@@ -1,11 +1,13 @@
-package slur.teamslur.backend.Domain.User;
+package slur.teamslur.backend.Domain.User.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import slur.teamslur.backend.Domain.User.Param.UserSearchParam;
-import slur.teamslur.backend.Domain.User.Param.UserSignUpParam;
+import slur.teamslur.backend.Domain.User.DTO.UserDTO;
+import slur.teamslur.backend.Domain.User.DTO.UserSearchParam;
+import slur.teamslur.backend.Domain.User.Service.UserService;
+import slur.teamslur.backend.Domain.User.DTO.UserSignUpParam;
 
 import java.util.List;
 

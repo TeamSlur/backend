@@ -1,8 +1,11 @@
-package slur.teamslur.backend.Domain.User;
+package slur.teamslur.backend.Domain.User.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import slur.teamslur.backend.Domain.User.Param.UserSignUpParam;
+import slur.teamslur.backend.Domain.User.DTO.UserDTO;
+import slur.teamslur.backend.Domain.User.DTO.UserSignUpParam;
+import slur.teamslur.backend.Domain.User.Entity.UserEntity;
+import slur.teamslur.backend.Domain.User.Repository.UserRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,12 +29,4 @@ public class UserService{
         repository.save(new UserEntity(signUpParam));
         return signUpParam;
     }
-
-//    public UserDTO findIdByEmail(String email){
-//        UserEntity userEntity = repository.findByUser_email(email);
-//        if (userEntity != null) {
-//            return new UserDTO(userEntity);
-//        }
-//        return null;
-//    }
 }

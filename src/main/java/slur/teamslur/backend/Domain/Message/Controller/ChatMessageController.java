@@ -11,6 +11,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import slur.teamslur.backend.Domain.Message.DTO.ChatMessage;
 import slur.teamslur.backend.Domain.Message.DTO.ResponseChat;
 import slur.teamslur.backend.Domain.Message.Service.ChatMessageService;
@@ -19,19 +20,25 @@ import slur.teamslur.backend.Domain.Message.Service.ChatMessageService;
 @Controller
 public class ChatMessageController {
 
-    private final SimpMessageSendingOperations messagingTemplate;
+    private final SimpMessageSendingOperations simpMessageSendingOperations;
     private final ChatMessageService chatMessageService;
 
-    @MessageMapping("/chat/{chatRoomId}/message")
-    public void sendMessage(@DestinationVariable Long chatRoomId,@Payload ChatMessage chatMessage){
-        System.out.println(chatMessage.getMessage());
+    @MessageMapping("/chat/{projId}/message")
+    public void sendMessage(@DestinationVariable Long projId,@Payload ChatMessage chatMessage){
+        System.out.println(chatMessage.getContent());
         chatMessageService.saveMessage(chatMessage);
-        messagingTemplate.convertAndSend("/sub/chat/"+chatRoomId,chatMessage);
+        simpMessageSendingOperations.convertAndSend("/sub/chat/"+projId,chatMessage.getContent());
     }
-    @GetMapping("/chat")
-    public ResponseEntity<Page<ResponseChat>> getChats(Pageable pageable) {
-        Page<ResponseChat> chatPage = chatMessageService.getChats(pageable);
 
+    // 참고 :
+    @GetMapping("/chat/{projId}")
+    public ResponseEntity<Page<ChatMessage>> getAllChatsbyProjId(@PathVariable Integer projId, Pageable pageable) {
+        if (projId == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        Page<ChatMessage> chatPage = chatMessageService.getChats(projId, pageable);
         return ResponseEntity.status(HttpStatus.OK).body(chatPage);
     }
+
 }

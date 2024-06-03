@@ -20,6 +20,8 @@ public class WebSocketBrokerConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         System.out.println("run registerStompEndpoints");
-        registry.addEndpoint("/chat").setAllowedOrigins("*").withSockJS();
+//        registry.addEndpoint("/ws").setAllowedOrigins("*").withSockJS();
+        registry.addEndpoint("/ws").setAllowedOrigins("*");
+        // apic에서 test할 때 withSockJS 쓰면 먹통됨
     }
 }
