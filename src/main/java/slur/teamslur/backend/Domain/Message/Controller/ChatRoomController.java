@@ -1,9 +1,13 @@
 package slur.teamslur.backend.Domain.Message.Controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import slur.teamslur.backend.Domain.Message.DTO.ChatRoom;
-import slur.teamslur.backend.Domain.Message.Repository.ChatRoomRepository;
+import slur.teamslur.backend.Domain.Message.DTO.RequestChatRoom;
+import slur.teamslur.backend.Domain.Message.DTO.ResponseChatRoom;
+import slur.teamslur.backend.Domain.Message.Service.ChatRoomService;
 
 import java.util.List;
 
@@ -12,30 +16,37 @@ import java.util.List;
 @RequestMapping("/chat")
 public class ChatRoomController {
 
-    private final ChatRoomRepository chatRoomRepository;
+    private final ChatRoomService chatRoomService;
 
 
     // 모든 채팅방 목록 반환
-    @GetMapping("/rooms")
+    @GetMapping("/chat")
     @ResponseBody
     public List<ChatRoom> room() {
-        List<ChatRoom> list = chatRoomRepository.findAllRoom();
+        List<ChatRoom> list = chatRoomService.findAllRoom();
         return list;
+    }
+
+    @GetMapping("/chat/{room_id}")
+    public ResponseEntity<ResponseChatRoom> getChatRoom(@PathVariable("room_id") Long roomId) {
+        ResponseChatRoom responseChatRoom = chatRoomService.getChatRoom(roomId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(responseChatRoom);
     }
 
 
     // 채팅방 생성
-    @PostMapping("/room")
-    @ResponseBody
-    public ChatRoom createRoom(@RequestParam String user1) {
-        return chatRoomRepository.createChatRoom(user1);
+    @PostMapping("/chat")
+    public ResponseEntity<Long> createChatRoom(@RequestBody RequestChatRoom requestChatRoom) {
+        Long chatRoomId = chatRoomService.createChatRoom(requestChatRoom);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(chatRoomId);
     }
 
 
-    // 특정 채팅방 조회
-    @GetMapping("/room/{roomId}")
+    @GetMapping("/chat/{roomId}")
     @ResponseBody
-    public ChatRoom roomInfo(@PathVariable String roomId) {
-        return chatRoomRepository.findRoomById(roomId);
+    public ChatRoom roomInfo(@PathVariable int roomId) {
+        return chatRoomService.findRoomById(roomId);
     }
 }

@@ -1,15 +1,22 @@
 package slur.teamslur.backend.Domain.Message.DTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+import java.time.LocalDate;
+
+@Getter
+@NoArgsConstructor
 public class ChatMessage {
-
     public enum MessageType {
-        ENTER, TALK, EXIT, MATCH, MATCH_REQUEST;
+        ENTER, TALK, EXIT;
     }
     private MessageType type;
-    private String roomId;
-    private String sender;
+    private int id;
+    private int projId;
+    private String userId;
     private String message;
+    private LocalDate time;
 }
