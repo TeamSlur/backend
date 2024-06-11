@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UserSearchParam {
-    private String email;
+public class SearchUserDTO {
     private String name;
 }
