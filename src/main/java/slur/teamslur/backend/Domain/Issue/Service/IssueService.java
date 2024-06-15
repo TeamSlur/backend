@@ -10,6 +10,7 @@ import slur.teamslur.backend.Domain.Message.DTO.ChatMessage;
 import slur.teamslur.backend.Domain.Message.Entity.ChatMessageEntity;
 import slur.teamslur.backend.Domain.User.DTO.UserDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,19 @@ public class IssueService {
 
 
 
-    //TODO : 이슈 조회 관련해서 Entuty <-> DTO 전환 처리 필요
-    /*public List<GetIssuesDTO> getIssuebyProjId(Integer projId) {
-        List<IssueEntity> entityList = issueRepository.findIssueByProjID(projId).stream().map(GetIssuesDTO::);
-        return entityList.stream().map(GetIssuesDTO::new).collect(Collectors.toList());
-    }*/
+    public List<GetIssuesDTO> getIssuebyProjId(Integer projId) {
+/*
+        List<IssueEntity> issueEntityList = issueRepository.findAllByProjId(projId);
+
+        List<GetIssuesDTO> getIssuesDTOList = issueEntityList.stream()
+                .map(issueEntity -> GetIssuesDTO.builder()
+                        .id(issueEntity.getId())
+                        .title(issueEntity.getTitle())
+                        .description(issueEntity.getDescription())
+                        // 필요한 필드들을 추가하세요
+                        .build())
+                .collect(Collectors.toList());
+*/
+        return new ArrayList<>();
+    }
 }

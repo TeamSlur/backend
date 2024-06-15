@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface IssueRepository extends JpaRepository<IssueEntity,Integer> {
-    UserEntity findById(String id){
-        retu;
-    }
+    List<IssueEntity> findAllByProjId(Integer projId);
 }

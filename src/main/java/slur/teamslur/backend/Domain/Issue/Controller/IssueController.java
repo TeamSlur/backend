@@ -12,9 +12,9 @@ import java.util.List;
 public class IssueController {
     private IssueService issueService;
 
-/*    @GetMapping("/{projId}/issues")
+    @GetMapping("/{projId}/issues")
     public List<GetIssuesDTO> getAllIssuesbyProjId(@PathVariable Integer projId) {
         List<GetIssuesDTO> issueList = issueService.getIssuebyProjId(projId);
         return issueList;
-    }*/
+    }
 }

@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import slur.teamslur.backend.Domain.User.DTO.UserSignUpParam;
+import slur.teamslur.backend.Domain.User.DTO.SignUpUserDTO;
 
 @Entity
 @Getter
@@ -22,7 +22,7 @@ public class UserEntity {
     private String pwd;
     private String email;
 
-    public UserEntity(UserSignUpParam signUpParam){
+    public UserEntity(SignUpUserDTO signUpParam){
         this.id = signUpParam.getId();
         this.name = signUpParam.getName();
         this.email = signUpParam.getEmail();

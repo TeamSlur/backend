@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class SearchUserDTO {
-    private String name;
+    private String id;
 }
