@@ -20,4 +20,11 @@ public class MemberService {
     public List<MemberEntity> getMembersByProjectId(int projId) {
         return memberRepository.findByProjId(projId);
     }
+
+    public MemberEntity modifyNicknameByUserId(int projId, String userId) {
+        MemberEntity member = memberRepository.findByProjIdAndUserId(projId,userId);
+        member.setNickName("Test");
+        memberRepository.save(member);
+        return member;
+    }
 }

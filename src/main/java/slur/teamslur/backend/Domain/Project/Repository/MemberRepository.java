@@ -11,4 +11,5 @@ import java.util.List;
 public interface MemberRepository extends JpaRepository<MemberEntity,Integer> {
     List<MemberEntity> findByProjId(@Param("projId") int projId);
 
+    MemberEntity findByProjIdAndUserId(int projId, String userId);
 }

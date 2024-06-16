@@ -57,9 +57,4 @@ public class UserController {
             return "Invalid credentials";
         }
     }
-
-//    @GetMapping("/forget/id")
-//    public UserDTO searchIDbyEmail(@RequestParam String email){
-//        return service.findIdByEmail(email);
-//    }
 }

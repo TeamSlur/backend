@@ -24,7 +24,8 @@ public class SecurityConfig {
                         .ignoringRequestMatchers(
                                 new AntPathRequestMatcher("/h2-console/**"),
                                 new AntPathRequestMatcher("/user"),
-                                new AntPathRequestMatcher("/user/login")
+                                new AntPathRequestMatcher("/user/login"),
+                                new AntPathRequestMatcher("/projects/**")
                         ))
                 .headers((headers) -> headers
                         .addHeaderWriter(new XFrameOptionsHeaderWriter(
