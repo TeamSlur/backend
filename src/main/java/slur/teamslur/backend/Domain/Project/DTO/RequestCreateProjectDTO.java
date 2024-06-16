@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateProjectDTO {
+public class RequestCreateProjectDTO {
     private int userId;
     private int projID;
 }

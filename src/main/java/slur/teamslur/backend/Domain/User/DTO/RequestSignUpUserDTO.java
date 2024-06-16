@@ -7,7 +7,7 @@ import slur.teamslur.backend.Domain.User.Entity.UserEntity;
 
 @Data
 @AllArgsConstructor
-public class SignUpUserDTO {
+public class RequestSignUpUserDTO {
     private String id;
     private String name;
     private String email;

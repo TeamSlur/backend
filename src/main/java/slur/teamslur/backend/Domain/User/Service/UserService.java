@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import slur.teamslur.backend.Domain.User.DTO.UserDTO;
-import slur.teamslur.backend.Domain.User.DTO.SignUpUserDTO;
+import slur.teamslur.backend.Domain.User.DTO.RequestSignUpUserDTO;
 import slur.teamslur.backend.Domain.User.Entity.UserEntity;
 import slur.teamslur.backend.Domain.User.Repository.UserRepository;
 import slur.teamslur.backend.Domain.User.UserRole;
@@ -29,12 +29,12 @@ public class UserService{
         return userRepository.findAll();
     }
 
-    public SignUpUserDTO signUpUsers(SignUpUserDTO signUpParam) {
+    public RequestSignUpUserDTO signUpUsers(RequestSignUpUserDTO signUpParam) {
         userRepository.save(new UserEntity(signUpParam));
         return signUpParam;
     }
 
-    public UserEntity createUser(SignUpUserDTO signUpParam){
+    public UserEntity createUser(RequestSignUpUserDTO signUpParam){
         signUpParam.pwdEncode();
         UserEntity userEntity = signUpParam.toEntity();
         return userRepository.save(userEntity);

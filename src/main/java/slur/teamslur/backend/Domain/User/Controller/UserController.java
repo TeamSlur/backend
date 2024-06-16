@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import slur.teamslur.backend.Domain.User.DTO.LoginUserDTO;
-import slur.teamslur.backend.Domain.User.DTO.SearchUserDTO;
+import slur.teamslur.backend.Domain.User.DTO.RequestSignInUserDTO;
+import slur.teamslur.backend.Domain.User.DTO.RequestSearchUserDTO;
 import slur.teamslur.backend.Domain.User.Entity.UserEntity;
 import slur.teamslur.backend.Domain.User.Service.UserService;
-import slur.teamslur.backend.Domain.User.DTO.SignUpUserDTO;
+import slur.teamslur.backend.Domain.User.DTO.RequestSignUpUserDTO;
 
 import java.util.List;
 
@@ -33,12 +33,12 @@ public class UserController {
 
     // ?id={userid}
     @GetMapping("/user/info")
-    public UserEntity getParameter(SearchUserDTO searchParam) {
+    public UserEntity getParameter(RequestSearchUserDTO searchParam) {
         return service.findById(searchParam.getId());
     }
 
     @PostMapping("/user")
-    public SignUpUserDTO signUpUser(@RequestBody SignUpUserDTO signUpParam) {
+    public RequestSignUpUserDTO signUpUser(@RequestBody RequestSignUpUserDTO signUpParam) {
         service.createUser(signUpParam);
         return signUpParam;
     }
@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @PostMapping("/user/login")
-    public String loginUser(@RequestBody LoginUserDTO loginUserDTO) {
+    public String loginUser(@RequestBody RequestSignInUserDTO loginUserDTO) {
         UserEntity userEntity = service.findById(loginUserDTO.getId());
         if (userEntity != null && new BCryptPasswordEncoder().matches(loginUserDTO.getPwd(), userEntity.getPwd())) {
             return "Login successful";

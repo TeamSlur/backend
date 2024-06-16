@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class SearchUserDTO {
+public class RequestSearchUserDTO {
     private String id;
 }

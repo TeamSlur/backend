@@ -2,7 +2,6 @@ package slur.teamslur.backend.Domain.Project.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import slur.teamslur.backend.Domain.Project.DTO.MemberProjectDTO;
 import slur.teamslur.backend.Domain.Project.Entity.MemberEntity;
 import slur.teamslur.backend.Domain.Project.Repository.MemberRepository;
 
