@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import slur.teamslur.backend.Domain.Issue.Entity.IssueEntity;
-import slur.teamslur.backend.Domain.Message.Entity.ChatMessageEntity;
 
 import java.util.Date;
 

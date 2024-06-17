@@ -1,18 +1,11 @@
 package slur.teamslur.backend.Domain.Issue.Service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import slur.teamslur.backend.Domain.Issue.DTO.GetIssuesDTO;
-import slur.teamslur.backend.Domain.Issue.Entity.IssueEntity;
 import slur.teamslur.backend.Domain.Issue.Repository.IssueRepository;
-import slur.teamslur.backend.Domain.Message.DTO.ChatMessage;
-import slur.teamslur.backend.Domain.Message.Entity.ChatMessageEntity;
-import slur.teamslur.backend.Domain.User.DTO.UserDTO;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class IssueService {
