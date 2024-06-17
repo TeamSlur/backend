@@ -1,15 +1,16 @@
 package slur.teamslur.backend.Domain.User.Service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import slur.teamslur.backend.Domain.User.DTO.UserDTO;
-import slur.teamslur.backend.Domain.User.DTO.RequestSignUpUserDTO;
+import slur.teamslur.backend.Domain.User.DTO.*;
 import slur.teamslur.backend.Domain.User.Entity.UserEntity;
 import slur.teamslur.backend.Domain.User.Repository.UserRepository;
-import slur.teamslur.backend.Domain.User.UserRole;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +41,19 @@ public class UserService{
         return userRepository.save(userEntity);
     }
 
-    public UserEntity findById(String id) {
-        Optional<UserEntity> userEntity = userRepository.findById(id);
-        return userEntity.orElse(null);
+    public ResponseEntity<ResponseSignInUserDTO> signInUser(RequestSignInUserDTO signInUserDTO) {
+        Optional<UserEntity> userEntity = userRepository.findById(signInUserDTO.getId());
+
+        if (userEntity.isPresent() && passwordEncoder.matches(signInUserDTO.getPwd(), userEntity.get().getPwd())) {
+            ResponseSignInUserDTO response = new ResponseSignInUserDTO(
+                    userEntity.get().getId(),
+                    userEntity.get().getName(),
+                    userEntity.get().getEmail()
+            );
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     public UserDTO findByIdTwo(String id) throws UsernameNotFoundException {
@@ -61,3 +72,5 @@ public class UserService{
         return new UserDTO(userEntity.getId(),userEntity.getName(),userEntity.getEmail());
     }
 }
+
+

@@ -1,4 +1,4 @@
-package slur.teamslur.backend.Domain.User;
+package slur.teamslur.backend.Domain.User.DTO;
 
 import lombok.Getter;
 
