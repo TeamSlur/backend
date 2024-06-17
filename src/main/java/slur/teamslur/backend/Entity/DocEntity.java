@@ -14,16 +14,12 @@ public class DocEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "proj_id")
+    @Column(name = "proj_id", nullable = false)
     private int projId;
-    @Column(name = "data_id")
     private int dataId;
-    @Column(name = "parent_id")
-    private int parent_id;
-    @Column(name = "title")
+    private Integer parentId;
     private String title;
-    @Column(name = "content")
     private String content;
-    @Column(name = "doc_path")
     private String docPath;
 }
+
