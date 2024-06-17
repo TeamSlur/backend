@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class ChatMessage {
-    private int id;
     private int projId;
     private String userId;
     private String content;
