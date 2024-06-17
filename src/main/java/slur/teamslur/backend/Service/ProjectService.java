@@ -29,19 +29,18 @@ public class ProjectService {
     public ResponseCreateProjectDTO saveProjectWithMembers(RequestCreateProjectDTO createProjectDTO) {
         ProjectEntity projectEntity = projectRepository.save(
                 ProjectEntity.builder()
-                        .projId(createProjectDTO.getProjId())
-                        .projName(createProjectDTO.getProjName())
+                        .name(createProjectDTO.getProjName())
                         .build());
         MemberEntity memberEntity = memberRepository.save(
                 MemberEntity.builder()
                         .userId(createProjectDTO.getUserId())
-                        .projId(createProjectDTO.getProjId())
+                        .projId(projectEntity.getProjId())
                         .nickName(createProjectDTO.getNickName())
                         .build());
         return new ResponseCreateProjectDTO(
                 memberEntity.getUserId(),
                 memberEntity.getProjId(),
-                projectEntity.getProjName(),
+                projectEntity.getName(),
                 memberEntity.getNickName()
         );
     }

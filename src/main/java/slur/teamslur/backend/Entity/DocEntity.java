@@ -1,4 +1,4 @@
-package slur.teamslur.backend.Domain.Document.Entity;
+package slur.teamslur.backend.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,8 +1,6 @@
 package slur.teamslur.backend.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,6 +14,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "project")
 public class ProjectEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projId;
-    private String projName;
+    @Column(name = "name")
+    private String name;
 }

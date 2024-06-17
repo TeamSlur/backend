@@ -55,7 +55,7 @@ public class UserService{
         }
     }
 
-    public UserDTO findByIdTwo(String id) throws UsernameNotFoundException {
+    public User findByIdTwo(String id) throws UsernameNotFoundException {
         Optional<UserEntity> userEntityOrigin = this.userRepository.findById(id);
         if (userEntityOrigin.isEmpty()){
             throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
@@ -68,7 +68,7 @@ public class UserService{
         else {
             authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));
         }
-        return new UserDTO(userEntity.getId(),userEntity.getName(),userEntity.getEmail());
+        return new User(userEntity.getId(),userEntity.getName(),userEntity.getEmail());
     }
 }
 

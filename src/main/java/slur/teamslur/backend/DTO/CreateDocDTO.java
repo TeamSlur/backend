@@ -1,4 +1,4 @@
-package slur.teamslur.backend.Domain.Document.DTO;
+package slur.teamslur.backend.DTO;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
-package slur.teamslur.backend.Domain.Document.Service;
+package slur.teamslur.backend.Service;
 
 import org.springframework.stereotype.Service;
-import slur.teamslur.backend.Domain.Document.Repository.DocRepository;
+import slur.teamslur.backend.Repository.DocRepository;
 
 @Service
 public class DocService {

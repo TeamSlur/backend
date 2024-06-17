@@ -1,7 +1,7 @@
-package slur.teamslur.backend.Domain.Document.Controller;
+package slur.teamslur.backend.Controller;
 
 import org.springframework.web.bind.annotation.RestController;
-import slur.teamslur.backend.Domain.Document.Service.DocService;
+import slur.teamslur.backend.Service.DocService;
 
 @RestController
 public class DocController {

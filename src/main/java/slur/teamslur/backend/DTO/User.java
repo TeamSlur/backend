@@ -8,7 +8,7 @@ import slur.teamslur.backend.Entity.UserEntity;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class User {
     private String id;
     private String name;
     private String email;

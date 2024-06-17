@@ -1,4 +1,4 @@
-package slur.teamslur.backend.Domain.Document.Config;
+package slur.teamslur.backend.Config;
 
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;

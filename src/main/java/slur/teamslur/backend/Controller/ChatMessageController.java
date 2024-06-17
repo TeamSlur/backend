@@ -12,6 +12,7 @@ import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import slur.teamslur.backend.DTO.ChatMessage;
 import slur.teamslur.backend.Service.ChatMessageService;
 
@@ -23,21 +24,19 @@ public class ChatMessageController {
     private final ChatMessageService chatMessageService;
 
     @MessageMapping("/chat/{projId}/message")
-    public void sendMessage(@DestinationVariable Long projId,@Payload ChatMessage chatMessage){
+    public void sendMessage(@DestinationVariable Long projId, @Payload ChatMessage chatMessage) {
         System.out.println(chatMessage.getContent());
         chatMessageService.saveMessage(chatMessage);
-        simpMessageSendingOperations.convertAndSend("/sub/chat/"+projId,chatMessage.getContent());
+        simpMessageSendingOperations.convertAndSend("/sub/chat/" + projId, chatMessage.getContent());
     }
 
-    // 참고 :
-    @GetMapping("/projects/{projId}/chats")
-    public ResponseEntity<Page<ChatMessage>> getAllChatsbyProjId(@PathVariable Integer projId, Pageable pageable) {
+    @GetMapping("/chat/{projId}")
+    public ResponseEntity<Page<ChatMessage>> getAllChatsByProjId(@PathVariable Long projId, Pageable pageable) {
         if (projId == null) {
             return ResponseEntity.badRequest().build();
         }
 
-        Page<ChatMessage> chatPage = chatMessageService.getChats(projId, pageable);
+        Page<ChatMessage> chatPage = chatMessageService.getChats(projId.intValue(), pageable);
         return ResponseEntity.status(HttpStatus.OK).body(chatPage);
     }
-
 }

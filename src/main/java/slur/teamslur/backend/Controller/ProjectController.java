@@ -33,18 +33,13 @@ public class ProjectController {
         return projectService.searchProjectsByUserId(userId);
     }
 
+    // 해당 프로젝트 정보 조회
+    // 페이지 구성에 필요한 문서 목록 반환하면 될 듯
     @GetMapping("/{id}")
     public ResponseEntity<ProjectEntity> getProject(@PathVariable int id) {
         ProjectEntity project = projectService.getProjectById(id);
         return ResponseEntity.ok(project);
     }
-
-    @GetMapping("/all")
-    public ResponseEntity<List<ProjectEntity>> getAllProjects() {
-        List<ProjectEntity> projects = projectService.getAllProjects();
-        return ResponseEntity.ok(projects);
-    }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removeProject(@PathVariable int id) {

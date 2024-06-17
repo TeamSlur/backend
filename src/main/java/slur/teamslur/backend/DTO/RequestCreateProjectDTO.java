@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RequestCreateProjectDTO {
     private String userId;
-    private int projId;
     private String projName;
     private String nickName;
 }

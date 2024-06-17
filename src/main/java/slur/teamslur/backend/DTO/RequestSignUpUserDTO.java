@@ -2,10 +2,13 @@ package slur.teamslur.backend.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import slur.teamslur.backend.Entity.UserEntity;
 
-@Data
+@Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class RequestSignUpUserDTO {
     private String id;
